@@ -1,0 +1,445 @@
+.domains {
+  padding: 8rem 0;
+  background: var(--color-surface);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+  }
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.labelLine {
+  width: 32px;
+  height: 2px;
+  background: var(--color-accent);
+  border-radius: 1px;
+}
+
+.labelText {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+}
+
+.headingGradient {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subheading {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  font-weight: 300;
+}
+
+.expertiseGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.expertiseCard {
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--domain-color);
+  border-radius: 20px;
+  background: var(--color-bg);
+}
+
+.cardHeading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+
+  p {
+    color: var(--color-text-muted);
+    font: 0.64rem var(--font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin-top: 0.2rem;
+    color: var(--color-text);
+    font: 700 1.45rem var(--font-display);
+  }
+}
+
+.domainMark {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--domain-color) 45%, transparent);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--domain-color) 10%, transparent);
+  color: var(--domain-color);
+  font: 700 0.75rem var(--font-mono);
+}
+
+.capabilityGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+
+  li {
+    display: flex;
+    gap: 0.5rem;
+    color: var(--color-text-secondary);
+    font-size: 0.82rem;
+    line-height: 1.45;
+
+    span { color: var(--domain-color); }
+  }
+}
+
+@media (max-width: 800px) {
+  .expertiseGrid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 500px) {
+  .domains { padding: 5rem 0; }
+  .container { padding: 0 1.25rem; }
+  .expertiseCard { padding: 1.35rem; }
+  .capabilityGrid { grid-template-columns: 1fr; }
+}
+
+// Domain selector tabs
+.domainSelector {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.domainBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  cursor: none;
+  transition: all 0.25s;
+  overflow: hidden;
+
+  &:hover {
+    color: var(--domain-color);
+    border-color: var(--domain-color);
+    background: rgba(255,255,255,0.05);
+  }
+
+  &Active {
+    color: var(--domain-color) !important;
+    border-color: var(--domain-color) !important;
+    background: rgba(255,255,255,0.06) !important;
+  }
+}
+
+.domainBtnIcon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.domainBtnName {
+  position: relative;
+  z-index: 1;
+}
+
+.domainBtnActive_indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 1px;
+}
+
+// Detail panel
+.detailPanel {
+  background: var(--gradient, rgba(255,255,255,0.02));
+  border: 1px solid var(--border, var(--color-border));
+  border-radius: 24px;
+  padding: 2.5rem;
+
+  @media (max-width: 768px) {
+    padding: 1.75rem;
+  }
+}
+
+.panelGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panelLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.panelVisual {
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.panelDesc {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+// Metrics
+.metrics {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  flex: 1;
+  min-width: 120px;
+}
+
+.metricIcon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.metricValue {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.metricLabel {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+}
+
+// Feature list
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.featureCheck {
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+// Panel right visual
+.panelRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+}
+
+// Payment flow
+.paymentFlow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 320px;
+}
+
+.flowTitle {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.flowStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.flowNode {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--node-color, var(--color-border));
+  border-radius: 12px;
+  width: 100%;
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  transition: all 0.2s;
+
+  &:hover {
+    background: rgba(255,255,255,0.07);
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  }
+}
+
+.flowIcon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.flowLabel {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.flowArrow {
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));
+  margin: 0 auto;
+  transform-origin: top;
+  box-shadow: 0 0 6px rgba(0,212,255,0.4);
+}
+
+// AI Orbit visual
+.aiVisual {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aiCenter {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 0 40px rgba(0,255,163,0.4);
+}
+
+.aiIcon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.aiLabel {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  color: #050816;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+.aiOrbitItem {
+  position: absolute;
+  width: 240px;
+  height: 2px;
+  transform-origin: center;
+  transform: rotate(var(--ai-angle));
+  display: flex;
+  justify-content: flex-end;
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem 0.65rem;
+    background: rgba(10,15,44,0.9);
+    border: 1px solid rgba(0,255,163,0.25);
+    border-radius: 100px;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--color-accent);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  }
+}

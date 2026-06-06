@@ -1,0 +1,303 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.canvasContainer,
+.blobs,
+.grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.canvasContainer { z-index: 1; opacity: 0.7; }
+.blobs { z-index: 0; overflow: hidden; }
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  animation: blob 12s infinite ease-in-out;
+}
+
+.blob1 {
+  width: 38rem;
+  height: 38rem;
+  top: -18rem;
+  right: -10rem;
+  background: rgba(0, 212, 255, 0.12);
+}
+
+.blob2 {
+  width: 30rem;
+  height: 30rem;
+  bottom: -14rem;
+  left: -12rem;
+  background: rgba(123, 97, 255, 0.12);
+  animation-delay: -4s;
+}
+
+.blob3 {
+  width: 20rem;
+  height: 20rem;
+  top: 42%;
+  left: 42%;
+  background: rgba(0, 255, 163, 0.06);
+  animation-delay: -8s;
+}
+
+.grid {
+  z-index: 0;
+  opacity: 0.7;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 42%, black 20%, transparent 100%);
+}
+
+.container {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 8.5rem 2rem 5rem;
+}
+
+.content { width: min(820px, 72%); }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1.5rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgba(0, 255, 163, 0.25);
+  border-radius: 999px;
+  background: rgba(0, 255, 163, 0.06);
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
+.tagDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 9px var(--color-accent);
+}
+
+.eyebrow {
+  margin-bottom: 0.6rem;
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.headline {
+  max-width: 900px;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6.4vw, 5.7rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+
+  span {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.description {
+  max-width: 710px;
+  margin-top: 1.5rem;
+  color: var(--color-text-secondary);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  line-height: 1.75;
+}
+
+.domainLine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.3rem;
+  margin-top: 1.2rem;
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+
+  span::before {
+    content: '/';
+    margin-right: 0.45rem;
+    color: var(--color-accent);
+  }
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.6rem;
+}
+
+.pill {
+  padding: 0.32rem 0.72rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+}
+
+.ctas {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.ctaPrimary,
+.ctaSecondary,
+.ctaText {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.75rem 1.35rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.ctaPrimary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: #050816;
+}
+
+.ctaSecondary {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+
+  &:hover { border-color: var(--color-primary); }
+}
+
+.ctaText {
+  color: var(--color-primary);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+.stat {
+  min-height: 98px;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: rgba(10, 15, 44, 0.58);
+  backdrop-filter: blur(12px);
+
+  strong {
+    display: block;
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+
+  span {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+}
+
+.currentRole {
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  width: min(310px, 25vw);
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: rgba(10, 15, 44, 0.7);
+  backdrop-filter: blur(18px);
+  transform: translateY(-50%);
+
+  strong {
+    display: block;
+    margin-top: 0.55rem;
+    color: var(--color-text);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    line-height: 1.25;
+  }
+
+  p {
+    margin: 1rem 0;
+    color: var(--color-text-secondary);
+    font-size: 0.82rem;
+    line-height: 1.65;
+  }
+}
+
+.currentRoleLabel {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.currentRoleTech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+
+  span {
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(0, 212, 255, 0.08);
+    color: var(--color-primary);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .content { width: 100%; }
+  .currentRole { display: none; }
+}
+
+@media (max-width: 700px) {
+  .container { padding: 7rem 1.25rem 3.5rem; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ctaPrimary, .ctaSecondary, .ctaText { flex: 1 1 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob { animation: none; }
+}

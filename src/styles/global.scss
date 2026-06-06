@@ -1,0 +1,274 @@
+@use './base/variables' as *;
+@use './base/mixins' as *;
+
+// ===========================
+// CSS CUSTOM PROPERTIES
+// ===========================
+:root {
+  --color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+  --color-accent: #{$color-accent};
+  --color-bg: #{$color-background};
+  --color-surface: #{$color-surface};
+  --color-surface-2: #{$color-surface-2};
+  --color-text: #{$color-text};
+  --color-text-secondary: #{$color-text-secondary};
+  --color-text-muted: #{$color-text-muted};
+  --color-border: #{$color-border};
+  --color-border-glow: #{$color-border-glow};
+  --font-display: #{$font-display};
+  --font-mono: #{$font-mono};
+  --font-body: #{$font-body};
+  --glow-primary: #{$glow-primary};
+  --glow-secondary: #{$glow-secondary};
+  --glow-accent: #{$glow-accent};
+  --shadow-card: #{$shadow-card};
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-xl: #{$radius-xl};
+  --transition-fast: #{$transition-fast};
+  --transition-base: #{$transition-base};
+  --transition-slow: #{$transition-slow};
+  --transition-spring: #{$transition-spring};
+  --cursor-x: 0px;
+  --cursor-y: 0px;
+}
+
+[data-theme="light"] {
+  --color-bg: #{$color-light-bg};
+  --color-surface: #{$color-light-surface};
+  --color-surface-2: #F0F2FF;
+  --color-text: #{$color-light-text};
+  --color-text-secondary: #{$color-light-text-secondary};
+  --color-text-muted: rgba(10, 15, 44, 0.4);
+  --color-border: #{$color-light-border};
+  --color-border-glow: rgba(0, 212, 255, 0.3);
+}
+
+// ===========================
+// RESET
+// ===========================
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: auto; // Lenis handles this
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  cursor: none;
+  
+  @include max-md {
+    cursor: auto;
+  }
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 11000;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  background: var(--color-primary);
+  color: #050816;
+  font-weight: 700;
+  transform: translateY(-160%);
+
+  &:focus { transform: translateY(0); }
+}
+
+.section-placeholder { min-height: 35vh; }
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: none;
+  border: none;
+  background: none;
+  font-family: inherit;
+  
+  @include max-md {
+    cursor: pointer;
+  }
+}
+
+ul, ol {
+  list-style: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+// ===========================
+// SELECTION
+// ===========================
+::selection {
+  background: rgba($color-primary, 0.3);
+  color: $color-text;
+}
+
+// ===========================
+// SCROLLBAR
+// ===========================
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: $color-background;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba($color-primary, 0.4);
+  border-radius: 3px;
+  &:hover {
+    background: rgba($color-primary, 0.7);
+  }
+}
+
+// ===========================
+// FOCUS
+// ===========================
+:focus-visible {
+  outline: 2px solid $color-primary;
+  outline-offset: 3px;
+}
+
+// ===========================
+// ANIMATIONS
+// ===========================
+@keyframes shimmer {
+  to { left: 200%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes scan-line {
+  to { transform: translateY(100vh); }
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
+}
+
+// ===========================
+// UTILITY CLASSES
+// ===========================
+.container {
+  @include container;
+}
+
+.section {
+  @include section-padding;
+}
+
+.gradient-text {
+  @include gradient-text;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px;
+}
+
+.reveal-text {
+  overflow: hidden;
+  > span {
+    display: inline-block;
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  body, button { cursor: auto; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (pointer: coarse) {
+  body { cursor: auto; }
+  button { cursor: pointer; }
+}

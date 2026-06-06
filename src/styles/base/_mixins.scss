@@ -1,0 +1,174 @@
+@use "./variables" as *;
+// ===========================
+// RESPONSIVE MIXINS
+// ===========================
+@mixin xs { @media (min-width: #{$bp-xs}) { @content; } }
+@mixin sm { @media (min-width: #{$bp-sm}) { @content; } }
+@mixin md { @media (min-width: #{$bp-md}) { @content; } }
+@mixin lg { @media (min-width: #{$bp-lg}) { @content; } }
+@mixin xl { @media (min-width: #{$bp-xl}) { @content; } }
+@mixin xxl { @media (min-width: #{$bp-2xl}) { @content; } }
+
+@mixin max-xs { @media (max-width: #{$bp-xs - 1px}) { @content; } }
+@mixin max-sm { @media (max-width: #{$bp-sm - 1px}) { @content; } }
+@mixin max-md { @media (max-width: #{$bp-md - 1px}) { @content; } }
+@mixin max-lg { @media (max-width: #{$bp-lg - 1px}) { @content; } }
+
+// ===========================
+// FLEX UTILITIES
+// ===========================
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// ===========================
+// GLASSMORPHISM
+// ===========================
+@mixin glass($opacity: 0.05, $blur: 20px) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@mixin glass-dark($opacity: 0.4, $blur: 20px) {
+  background: rgba(5, 8, 22, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+// ===========================
+// GRADIENTS
+// ===========================
+@mixin gradient-text($from: $color-primary, $to: $color-secondary) {
+  background: linear-gradient(135deg, $from, $to);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@mixin gradient-border($from: $color-primary, $to: $color-secondary, $radius: $radius-lg) {
+  position: relative;
+  border-radius: $radius;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: $radius + 1px;
+    background: linear-gradient(135deg, $from, $to);
+    z-index: -1;
+  }
+}
+
+// ===========================
+// GLOW EFFECTS
+// ===========================
+@mixin glow($color: $color-primary, $size: 20px, $opacity: 0.4) {
+  box-shadow: 0 0 $size rgba($color, $opacity), 0 0 ($size * 2) rgba($color, $opacity * 0.5);
+}
+
+@mixin text-glow($color: $color-primary, $size: 15px) {
+  text-shadow: 0 0 $size rgba($color, 0.8), 0 0 ($size * 2) rgba($color, 0.4);
+}
+
+// ===========================
+// TYPOGRAPHY
+// ===========================
+@mixin heading-display {
+  font-family: $font-display;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+@mixin heading-section {
+  font-family: $font-display;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+@mixin mono-text {
+  font-family: $font-mono;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+// ===========================
+// LAYOUT
+// ===========================
+@mixin container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 $space-6;
+  
+  @include lg {
+    padding: 0 $space-8;
+  }
+}
+
+@mixin section-padding {
+  padding: $space-20 0;
+  
+  @include lg {
+    padding: $space-32 0;
+  }
+}
+
+// ===========================
+// ANIMATIONS
+// ===========================
+@mixin hover-lift($y: -4px) {
+  transition: transform $transition-base, box-shadow $transition-base;
+  &:hover {
+    transform: translateY($y);
+  }
+}
+
+@mixin shimmer {
+  overflow: hidden;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    animation: shimmer 2.5s infinite;
+  }
+}
+
+// ===========================
+// SCROLLBAR
+// ===========================
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    background: rgba($color-primary, 0.4);
+    border-radius: 2px;
+  }
+}
+
+// ===========================
+// CLIP PATHS
+// ===========================
+@mixin clip-corner($size: 20px) {
+  clip-path: polygon(#{$size} 0%, 100% 0%, 100% calc(100% - #{$size}), calc(100% - #{$size}) 100%, 0% 100%, 0% #{$size});
+}

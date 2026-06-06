@@ -1,0 +1,98 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #050816;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+  width: 280px;
+}
+
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #00D4FF, #7B61FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+
+.phaseText {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.08em;
+  text-align: center;
+  height: 1.2em;
+}
+
+.progressTrack {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 1px;
+  overflow: visible;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #00D4FF, #7B61FF, #00FFA3);
+  border-radius: 1px;
+  transition: width 0.03s linear;
+}
+
+.progressGlow {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(0,212,255,0.8) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.progressNum {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.06em;
+}
+
+// Corners
+.corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: rgba(0,212,255,0.3);
+  border-style: solid;
+  pointer-events: none;
+
+  &.topLeft { top: 2rem; left: 2rem; border-width: 2px 0 0 2px; }
+  &.topRight { top: 2rem; right: 2rem; border-width: 2px 2px 0 0; }
+  &.bottomLeft { bottom: 2rem; left: 2rem; border-width: 0 0 2px 2px; }
+  &.bottomRight { bottom: 2rem; right: 2rem; border-width: 0 2px 2px 0; }
+}
