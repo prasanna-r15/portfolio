@@ -6,7 +6,7 @@ export const personal = {
   email: 'prasannar.0505@gmail.com',
   github: 'https://github.com/prasannar',
   linkedin: 'https://www.linkedin.com/in/prasanna-r-77530916b',
-  resume: '/Prasanna-R-Resume.pdf',
+  resume: '/assets/docs/Prasanna_R_CV.pdf',
   photo: '/assets/images/prasanna-profile.png',
   summary:
     'Software Engineer with experience building enterprise-grade banking and payment solutions, learning management platforms, AI-powered educational products and scalable backend systems. Skilled in designing secure APIs, payment integrations, transaction processing systems, microservices architectures and modern web applications.',
