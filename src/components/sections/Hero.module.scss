@@ -109,7 +109,7 @@
   color: var(--color-text);
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 6.4vw, 5.7rem);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.05em;
   line-height: 0.98;
 
@@ -213,12 +213,12 @@
   padding: 1rem;
   border: 1px solid var(--color-border);
   border-radius: 14px;
-  background: rgba(10, 15, 44, 0.58);
+  background: deepskyblue;
   backdrop-filter: blur(12px);
 
   strong {
     display: block;
-    color: var(--color-primary);
+    color: antiquewhite;
     font-family: var(--font-display);
     font-size: 1.75rem;
     line-height: 1;
@@ -227,7 +227,7 @@
   span {
     display: block;
     margin-top: 0.5rem;
-    color: var(--color-text-muted);
+    color: initial;
     font-family: var(--font-mono);
     font-size: 0.62rem;
     line-height: 1.4;
@@ -243,7 +243,8 @@
   padding: 1.5rem;
   border: 1px solid var(--color-border);
   border-radius: 18px;
-  background: rgba(10, 15, 44, 0.7);
+  // background: rgba(10, 15, 44, 0.7);
+  background: deepskyblue;
   backdrop-filter: blur(18px);
   transform: translateY(-50%);
 
@@ -265,7 +266,7 @@
 }
 
 .currentRoleLabel {
-  color: var(--color-accent);
+  color: seashell;
   font-family: var(--font-mono);
   font-size: 0.66rem;
   letter-spacing: 0.1em;
@@ -281,7 +282,7 @@
     padding: 0.25rem 0.5rem;
     border-radius: 999px;
     background: rgba(0, 212, 255, 0.08);
-    color: var(--color-primary);
+    color: floralwhite;
     font-family: var(--font-mono);
     font-size: 0.6rem;
   }

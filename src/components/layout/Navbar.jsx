@@ -66,10 +66,10 @@ export default function Navbar() {
             <button
               className={styles.themeToggle}
               onClick={toggleTheme}
-              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
               aria-pressed={theme === 'light'}
             >
-              <span className={styles.themeIcon}>{theme === 'dark' ? 'Light' : 'Dark'}</span>
+              <span className={styles.themeIcon}>{theme === 'lightdark' ? 'dark' : 'light'}</span>
             </button>
             <a href="#contact" className={styles.cta} onClick={(event) => handleNavClick(event, '#contact')}>
               Let's Talk

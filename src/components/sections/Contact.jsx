@@ -46,7 +46,7 @@ export default function Contact() {
               <span className={styles.availDot} />
               <div>
                 <span className={styles.availTitle}>Available for Opportunities</span>
-                <span className={styles.availSub}>Full-time · Contract · Collaboration</span>
+                <span className={styles.availSub}>Full-time</span>
               </div>
             </div>
             <div className={styles.contactItems}>

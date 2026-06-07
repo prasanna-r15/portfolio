@@ -40,7 +40,7 @@ export default function About() {
                   <span className={styles.badgeSub}>Banking · Payments · EdTech</span>
                 </div>
               </div>
-              <div className={styles.locationTag}>Chennai, India</div>
+              <div className={styles.locationTag}>Coimbatore, India</div>
             </div>
           </motion.div>
 

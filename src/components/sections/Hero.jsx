@@ -73,7 +73,7 @@ export default function Hero() {
         <div className={styles.content}>
           <div className={styles.tag} data-hero-reveal>
             <span className={styles.tagDot} />
-            Software Engineer · 3+ Years
+            Software Engineer · 4+ Years
           </div>
 
           <p className={styles.eyebrow} data-hero-reveal>{personal.name}</p>
@@ -81,7 +81,7 @@ export default function Hero() {
             Building Scalable <span>Banking, Payments</span> & Enterprise Applications
           </h1>
           <p className={styles.description} data-hero-reveal>
-            Software Engineer with 3+ years of experience developing high-performance applications
+            Software Engineer with 4+ years of experience developing high-performance applications
             across Banking, Payments and EdTech using Java, Spring Boot, React and Microservices.
           </p>
 
