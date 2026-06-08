@@ -395,3 +395,9 @@
   40% { content: '..'; }
   60%, 100% { content: '...'; }
 }
+
+.errorMessage {
+  margin-bottom: 1rem;
+  color: #ff6b6b;
+  font-size: 0.9rem;
+}
