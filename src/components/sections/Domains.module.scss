@@ -1,5 +1,5 @@
 .domains {
-  padding: 8rem 0;
+  padding: 3rem 0;
   background: var(--color-surface);
   position: relative;
 
@@ -138,7 +138,7 @@
 }
 
 @media (max-width: 500px) {
-  .domains { padding: 5rem 0; }
+  .domains { padding: 3rem 0; }
   .container { padding: 0 1.25rem; }
   .expertiseCard { padding: 1.35rem; }
   .capabilityGrid { grid-template-columns: 1fr; }

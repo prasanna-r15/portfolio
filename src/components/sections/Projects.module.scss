@@ -1,5 +1,5 @@
 .projects {
-  padding: 8rem 0;
+  padding: 3rem 0;
   position: relative;
   background: var(--color-bg);
 
@@ -276,7 +276,7 @@
 }
 
 @media (max-width: 560px) {
-  .projects { padding: 5rem 0; }
+  .projects { padding: 3rem 0; }
   .container { padding: 0 1.25rem; }
   .header { margin-bottom: 3rem; }
 }

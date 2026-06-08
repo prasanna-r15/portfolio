@@ -35,6 +35,20 @@
   overflow: hidden;
 }
 
+@media (max-width: 1024px){
+  .bigName{
+    font-size: clamp(2rem, 9vw, 10rem);
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .bigName{
+    font-size: clamp(2rem, 9vw, 10rem);
+    margin-bottom: 1rem;
+  }
+}
+
 .bigNameAccent {
   background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(123,97,255,0.08));
   -webkit-background-clip: text;
