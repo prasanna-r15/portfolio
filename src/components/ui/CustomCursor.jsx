@@ -19,18 +19,21 @@ export default function CustomCursor() {
     if (!cursor || !follower) return;
 
     const move = (e) => {
-      pos.current = { x: e.clientX, y: e.clientY };
+      cursor.style.opacity = '1';
+      follower.style.opacity = '1';
+    
       gsap.to(cursor, {
         x: e.clientX,
         y: e.clientY,
         duration: 0.08,
-        ease: 'none',
+        ease: 'none'
       });
+    
       gsap.to(follower, {
         x: e.clientX,
         y: e.clientY,
         duration: 0.35,
-        ease: 'power2.out',
+        ease: 'power2.out'
       });
     };
 

@@ -1,17 +1,20 @@
 .section {
-  padding: 3rem 0;
+  @include section-padding;
   position: relative;
   background: var(--color-bg);
   border-top: 1px solid var(--color-border);
+  overflow: hidden;
 }
 
 .container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  @include container;
   display: grid;
   grid-template-columns: 0.8fr 1.4fr;
-  gap: 4rem;
+  gap: clamp(2rem, 5vw, 4rem);
+
+  @include max-lg {
+    grid-template-columns: 1fr;
+  }
 }
 
 .sectionLabel {
@@ -45,7 +48,11 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  gap: clamp(0.85rem, 2vw, 1rem);
+
+  @include max-sm {
+    grid-template-columns: 1fr;
+  }
 }
 
 .card {
@@ -53,6 +60,8 @@
   border: 1px solid var(--color-border);
   border-radius: 16px;
   background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition: var(--theme-transition);
 
   h3 {
     margin: 0.8rem 0 0.5rem;

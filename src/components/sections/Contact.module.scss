@@ -1,5 +1,5 @@
 .contact {
-  padding: 3rem 0;
+  @include section-padding;
   background: var(--color-surface);
   position: relative;
   overflow: hidden;
@@ -22,14 +22,12 @@
   transform: translate(-50%, -50%);
   width: 800px;
   height: 400px;
-  background: radial-gradient(ellipse, rgba(0,212,255,0.04) 0%, rgba(123,97,255,0.04) 40%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(37, 99, 235, 0.05) 0%, rgba(14, 165, 233, 0.04) 40%, transparent 70%);
   pointer-events: none;
 }
 
 .container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  @include container;
   position: relative;
   z-index: 1;
 }
@@ -109,8 +107,8 @@
   align-items: center;
   gap: 1rem;
   padding: 1.25rem 1.5rem;
-  background: rgba(0,255,163,0.06);
-  border: 1px solid rgba(0,255,163,0.2);
+  background: var(--accent-soft-bg);
+  border: 1px solid var(--accent-soft-border);
   border-radius: 16px;
 }
 
@@ -137,7 +135,7 @@
   display: block;
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  color: rgba(0,255,163,0.6);
+  color: rgba(20, 184, 166, 0.65);
   letter-spacing: 0.06em;
   margin-top: 0.2rem;
 }
@@ -215,7 +213,7 @@
   width: 46px;
   height: 46px;
   border-radius: 12px;
-  background: rgba(255,255,255,0.04);
+  background: var(--surface-muted);
   border: 1px solid var(--color-border);
   display: flex;
   align-items: center;
@@ -227,7 +225,7 @@
   &:hover {
     color: var(--social-color);
     border-color: var(--social-color);
-    background: rgba(255,255,255,0.07);
+    background: var(--color-hover);
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
   }
 }
@@ -275,7 +273,7 @@
 }
 
 .input {
-  background: rgba(255,255,255,0.03);
+  background: var(--surface-input);
   border: 1px solid var(--color-border);
   border-radius: 10px;
   padding: 0.875rem 1rem;
@@ -291,8 +289,8 @@
   }
 
   &:focus {
-    border-color: rgba(0,212,255,0.4);
-    box-shadow: 0 0 0 3px rgba(0,212,255,0.08);
+    border-color: rgba(37, 99, 235, 0.45);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
   }
 }
 
@@ -307,20 +305,20 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 1rem 2rem;
+  min-height: 48px;
   background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-  color: #050816;
+  color: var(--color-on-primary);
   border-radius: 12px;
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: clamp(0.88rem, 2vw, 0.95rem);
   font-weight: 700;
   border: none;
-  cursor: none;
   transition: box-shadow 0.3s, opacity 0.2s;
   width: 100%;
   margin-top: 0.5rem;
 
   &:hover:not(:disabled) {
-    box-shadow: 0 10px 30px rgba(0,212,255,0.3);
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.28);
   }
 
   &:disabled {

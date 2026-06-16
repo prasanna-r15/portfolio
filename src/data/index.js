@@ -1,3 +1,6 @@
+import amphisoftCertificate from '@/assets/certificates/amphisoft-star-performer.jpg';
+import freckledCertificate from '@/assets/certificates/freckled-mr-professional.jpg';
+
 export const personal = {
   name: 'Prasanna R',
   role: 'Software Engineer',
@@ -37,7 +40,7 @@ export const domains = [
     id: 'banking',
     name: 'Banking & Payments',
     mark: 'BP',
-    color: '#00D4FF',
+    color: '#2563EB',
     description:
       'Payment gateway systems for real-time and batch transactions across Singapore, Indonesia, Thailand and beyond — connecting banking networks with multi-format message processing.',
     capabilities: [
@@ -53,7 +56,7 @@ export const domains = [
     id: 'edtech',
     name: 'EdTech',
     mark: 'ED',
-    color: '#00FFA3',
+    color: '#14B8A6',
     description:
       'Full-stack learning platforms from corporate soft-skill tools to early childhood education — integrated with AI content generation, real-time video and interactive assessments.',
     capabilities: [
@@ -94,72 +97,72 @@ export const projects = [
     number: '01',
     title: 'Payment Gateway — Real-time & Batch Processing',
     domain: 'Banking',
-    domainColor: '#00D4FF',
+    domainColor: '#2563EB',
     problem: 'Banks across Singapore, Indonesia and Thailand needed a unified gateway handling multiple message formats in both real-time and batch modes.',
     solution: 'Architected fault-tolerant pipelines supporting ISO8583, ISO 20022, fixed-length and JSON formats with Kafka, IBM MQ and ActiveMQ for mission-critical reliability.',
     tech: ['Java', 'ISO8583', 'ISO 20022', 'Kafka', 'IBM MQ', 'ActiveMQ', 'PostgreSQL'],
     achievement: '99.9% SLA across high-throughput real-time and batch transaction flows.',
-    gradient: 'linear-gradient(135deg, #00D4FF 0%, #7B61FF 100%)',
+    gradient: 'linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%)',
   },
   {
     id: 2,
     number: '02',
     title: 'eGIRO Mandate Integration',
     domain: 'Banking',
-    domainColor: '#7B61FF',
+    domainColor: '#0EA5E9',
     problem: 'The gateway needed to support Singapore\'s eGIRO direct-debit scheme — mandate creation, amendments and cancellations aligned with banking regulations.',
     solution: 'Played a key role in designing and integrating the full eGIRO flow into the payment gateway, covering mandate lifecycle management end-to-end.',
     tech: ['Java', 'Spring Boot', 'ISO 20022', 'TCP', 'PostgreSQL', 'OpenShift'],
     achievement: 'Successfully delivered eGIRO compliance for direct-debit banking operations.',
-    gradient: 'linear-gradient(135deg, #7B61FF 0%, #00D4FF 100%)',
+    gradient: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 100%)',
   },
   {
     id: 3,
     number: '03',
     title: 'Human Transformation @ FRECKLED',
     domain: 'EdTech',
-    domainColor: '#00FFA3',
+    domainColor: '#14B8A6',
     problem: 'Organisations needed a structured soft-skill development platform with AI-powered content and real-time coaching capabilities.',
     solution: 'Built the platform from the ground up — starting as a backend developer with Groovy/Grails, expanding into full-stack React.js development, and integrating OpenAI for AI-driven interactions and GitLab for automated error monitoring.',
     tech: ['React.js', 'Groovy/Grails', 'Java', 'OpenAI', 'GitLab API', 'MySQL', 'AWS'],
     achievement: 'Grew from backend engineer to full-stack developer delivering a production-grade AI learning platform.',
-    gradient: 'linear-gradient(135deg, #00FFA3 0%, #00D4FF 100%)',
+    gradient: 'linear-gradient(135deg, #14B8A6 0%, #2563EB 100%)',
   },
   {
     id: 4,
     number: '04',
     title: 'ImageofAChild — Early Learning Platform',
     domain: 'EdTech',
-    domainColor: '#FFB86B',
+    domainColor: '#38BDF8',
     problem: 'Nursery children needed an engaging digital learning environment covering listening, reading, writing, speaking and interactive games — with live coaching and performance evaluation.',
     solution: 'Developed the full platform with OpenVidu-powered real-time video sessions and an AI evaluation engine that scores each participant\'s performance after every session.',
     tech: ['React.js', 'Java', 'Spring Boot', 'OpenVidu', 'OpenAI', 'MySQL'],
     achievement: 'Delivered AI-scored live sessions across listening, reading, writing and speaking modules.',
-    gradient: 'linear-gradient(135deg, #FFB86B 0%, #FF6B9D 100%)',
+    gradient: 'linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%)',
   },
   {
     id: 5,
     number: '05',
     title: 'Jira Integration for E-Box Platform',
     domain: 'EdTech',
-    domainColor: '#FF6B9D',
+    domainColor: '#0EA5E9',
     problem: 'HCL trainees using the e-box learning platform had to switch between tabs to monitor their Jira sprint progress — a friction-heavy workflow during active training sessions.',
     solution: 'Integrated Jira directly into the e-box platform: sprint CRUD, real-time progress tracking and analytics, eliminating the need to leave the learning environment.',
     tech: ['Java', 'Groovy/Grails', 'Jira API', 'REST APIs', 'MySQL'],
     achievement: 'Eliminated context-switching for HCL trainees by embedding Jira sprint management in-platform.',
-    gradient: 'linear-gradient(135deg, #FF6B9D 0%, #7B61FF 100%)',
+    gradient: 'linear-gradient(135deg, #14B8A6 0%, #2563EB 100%)',
   },
   {
     id: 6,
     number: '06',
     title: 'ISO8583 Simulator & TCP Messaging Tool',
     domain: 'Banking',
-    domainColor: '#00D4FF',
+    domainColor: '#2563EB',
     problem: 'Payment teams needed a controlled environment to test and inspect ISO8583 financial messages before connecting to live bank networks.',
     solution: 'Built configurable message simulation with field-level inspection and TCP request-response tooling to validate financial messaging behaviour end-to-end.',
     tech: ['Java', 'ISO8583', 'TCP/IP', 'Message Parsing', 'Spring Boot'],
     achievement: 'Shortened financial messaging diagnosis and improved integration test confidence.',
-    gradient: 'linear-gradient(135deg, #00D4FF 0%, #00FFA3 100%)',
+    gradient: 'linear-gradient(135deg, #2563EB 0%, #14B8A6 100%)',
   },
 ];
 
@@ -180,7 +183,7 @@ export const experience = [
       'Tuned high-throughput transaction systems to sustain performance and 99.9% SLA targets under peak loads.',
     ],
     skills: ['Core Java', 'ISO8583', 'ISO 20022', 'ActiveMQ', 'IBM MQ', 'SwiftMQ', 'Kafka', 'PostgreSQL', 'TCP/IP', 'Fixed-length', 'OpenShift', 'Jenkins'],
-    color: '#00D4FF',
+    color: '#2563EB',
   },
   {
     id: 2,
@@ -199,7 +202,7 @@ export const experience = [
       'Integrated OpenVidu for real-time video sessions and built an AI evaluation engine to score participants after each session.',
     ],
     skills: ['React.js', 'Groovy', 'Grails', 'Java', 'Spring Boot', 'OpenAI', 'OpenVidu', 'GitLab API', 'AWS', 'MySQL', 'Python'],
-    color: '#7B61FF',
+    color: '#0EA5E9',
   },
   {
     id: 3,
@@ -218,7 +221,7 @@ export const experience = [
       'Recognised as a Star Performer during the internship and received a full-time offer.',
     ],
     skills: ['Java', 'React.js', 'Groovy', 'Grails', 'Jira API', 'REST APIs', 'SQL', 'Git', 'HTML', 'CSS', 'JavaScript'],
-    color: '#00FFA3',
+    color: '#14B8A6',
   },
 ];
 
@@ -232,15 +235,36 @@ export const whyHireMe = [
 ];
 
 export const achievements = [
-  { label: 'Years Experience', value: '4+', mark: 'YE', color: '#00D4FF' },
-  { label: 'Products Built', value: '4+', mark: 'PB', color: '#7B61FF' },
-  { label: 'Banking Integrations', value: '5+', mark: 'BI', color: '#00FFA3' },
-  { label: 'Core Technologies', value: '20+', mark: 'CT', color: '#FFB86B' },
+  { label: 'Years Experience', value: '4+', mark: 'YE', color: '#2563EB' },
+  { label: 'Products Built', value: '4+', mark: 'PB', color: '#0EA5E9' },
+  { label: 'Banking Integrations', value: '5+', mark: 'BI', color: '#14B8A6' },
+  { label: 'Core Technologies', value: '20+', mark: 'CT', color: '#38BDF8' },
+];
+
+export const certifications = [
+  {
+    id: 'amphisoft-star-performer',
+    title: 'Star Performer Award',
+    organization: 'Amphisoft Technologies',
+    period: 'November 2021 – July 2022',
+    description:
+      'Recognized as a Star Performer during my internship for exceptional commitment, consistent performance, dedication, and contribution to development activities.',
+    image: amphisoftCertificate,
+  },
+  {
+    id: 'freckled-mr-professional',
+    title: 'Mr. Professional',
+    organization: 'Freckled Technologies',
+    description:
+      'Awarded the title "Mr. Professional" in recognition of professionalism, work ethic, contribution, and positive impact within the organization.',
+    image: freckledCertificate,
+  },
 ];
 
 export const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Experience', href: '#experience' },
+  { label: 'Certifications', href: '#certifications' },
   { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
   { label: 'Contact', href: '#contact' },

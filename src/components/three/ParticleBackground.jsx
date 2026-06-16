@@ -3,20 +3,19 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
-function ParticleField({ mouse }) {
+function ParticleField({ mouse, count = 3500 }) {
   const pointsRef = useRef();
   const { size } = useThree();
 
   const [positions, colors] = useMemo(() => {
-    const count = 3500;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
 
     const palette = [
-      new THREE.Color('#00D4FF'),
-      new THREE.Color('#7B61FF'),
-      new THREE.Color('#00FFA3'),
-      new THREE.Color('#ffffff'),
+      new THREE.Color('#2563EB'),
+      new THREE.Color('#0EA5E9'),
+      new THREE.Color('#14B8A6'),
+      new THREE.Color('#F8FAFC'),
     ];
 
     for (let i = 0; i < count; i++) {
@@ -36,7 +35,7 @@ function ParticleField({ mouse }) {
     }
 
     return [positions, colors];
-  }, []);
+  }, [count]);
 
   useFrame((state) => {
     if (!pointsRef.current) return;
@@ -83,23 +82,25 @@ function FloatingGeometry({ position, color, speed = 1 }) {
 }
 
 function Scene({ mouseRef }) {
+  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
+  const particleCount = isMobile ? 1200 : 3500;
   const geometries = useMemo(() => [
-    { position: [2.5, 1, -1], color: '#00D4FF', speed: 0.7 },
-    { position: [-2.5, 0.5, -0.5], color: '#7B61FF', speed: 1.1 },
-    { position: [1.5, -1.5, -1.5], color: '#00FFA3', speed: 0.9 },
-    { position: [-1.8, -1, -1], color: '#00D4FF', speed: 0.6 },
-    { position: [3, -0.5, -2], color: '#7B61FF', speed: 1.3 },
+    { position: [2.5, 1, -1], color: '#2563EB', speed: 0.7 },
+    { position: [-2.5, 0.5, -0.5], color: '#0EA5E9', speed: 1.1 },
+    { position: [1.5, -1.5, -1.5], color: '#14B8A6', speed: 0.9 },
+    { position: [-1.8, -1, -1], color: '#2563EB', speed: 0.6 },
+    { position: [3, -0.5, -2], color: '#0EA5E9', speed: 1.3 },
   ], []);
 
   return (
     <>
-      <ParticleField mouse={mouseRef} />
+      <ParticleField mouse={mouseRef} count={particleCount} />
       {geometries.map((g, i) => (
         <FloatingGeometry key={i} {...g} />
       ))}
       <ambientLight intensity={0.3} />
-      <pointLight position={[3, 3, 3]} intensity={1.5} color="#00D4FF" />
-      <pointLight position={[-3, -3, -3]} intensity={1} color="#7B61FF" />
+      <pointLight position={[3, 3, 3]} intensity={1.5} color="#2563EB" />
+      <pointLight position={[-3, -3, -3]} intensity={1} color="#0EA5E9" />
     </>
   );
 }

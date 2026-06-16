@@ -38,7 +38,7 @@ export default function Experience() {
           {experience.map((exp, expIndex) => (
             <motion.div
               key={exp.id}
-              className={styles.timelineItem}
+              className={`${styles.timelineItem} ${expIndex % 2 === 0 ? styles.sideLeft : styles.sideRight}`}
               initial={{ opacity: 0, x: 40 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.2 + expIndex * 0.15 }}

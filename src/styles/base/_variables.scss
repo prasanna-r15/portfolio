@@ -1,24 +1,34 @@
 // ===========================
-// COLOR SYSTEM
+// COLOR SYSTEM — Premium FinTech Palette
 // ===========================
-$color-primary: #00D4FF;
-$color-secondary: #7B61FF;
-$color-accent: #00FFA3;
-$color-background: #050816;
-$color-surface: #0A0F2C;
-$color-surface-2: #0D1533;
-$color-text: #FFFFFF;
-$color-text-secondary: rgba(255, 255, 255, 0.6);
-$color-text-muted: rgba(255, 255, 255, 0.35);
-$color-border: rgba(255, 255, 255, 0.08);
-$color-border-glow: rgba(0, 212, 255, 0.3);
+$color-primary: #2563EB;
+$color-secondary: #0EA5E9;
+$color-accent: #14B8A6;
+$color-hover-accent: #38BDF8;
+$color-background: #0F172A;
+$color-surface: #1E293B;
+$color-surface-2: #334155;
+$color-card: #334155;
+$color-text: #F8FAFC;
+$color-text-secondary: #CBD5E1;
+$color-text-muted: rgba(203, 213, 225, 0.55);
+$color-border: #475569;
+$color-border-glow: rgba(37, 99, 235, 0.35);
 
 // Light theme
-$color-light-bg: #F8F9FF;
+$color-light-bg: #F8FAFC;
 $color-light-surface: #FFFFFF;
-$color-light-text: #0A0F2C;
-$color-light-text-secondary: rgba(10, 15, 44, 0.65);
-$color-light-border: rgba(10, 15, 44, 0.1);
+$color-light-card: #FFFFFF;
+$color-light-text: #0F172A;
+$color-light-text-secondary: #475569;
+$color-light-text-muted: rgba(71, 85, 105, 0.65);
+$color-light-border: #CBD5E1;
+$color-light-hover: #E2E8F0;
+$color-light-shadow-card: 0 1px 3px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.08);
+$color-light-shadow-elevated: 0 4px 6px rgba(15, 23, 42, 0.05), 0 20px 40px rgba(15, 23, 42, 0.1);
+
+// Timeline breakpoint
+$bp-timeline: 1200px;
 
 // ===========================
 // TYPOGRAPHY
@@ -77,10 +87,11 @@ $z-below: -1;
 $z-base: 0;
 $z-raised: 10;
 $z-overlay: 20;
-$z-modal: 30;
+$z-modal: 12000;
 $z-popover: 40;
 $z-cursor: 9999;
 $z-loader: 10000;
+$z-nav: 100;
 
 // ===========================
 // TRANSITIONS
@@ -94,9 +105,9 @@ $transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 // ===========================
 // EFFECTS
 // ===========================
-$glow-primary: 0 0 30px rgba(0, 212, 255, 0.35);
-$glow-secondary: 0 0 30px rgba(123, 97, 255, 0.35);
-$glow-accent: 0 0 30px rgba(0, 255, 163, 0.35);
+$glow-primary: 0 0 30px rgba(37, 99, 235, 0.35);
+$glow-secondary: 0 0 30px rgba(14, 165, 233, 0.35);
+$glow-accent: 0 0 30px rgba(20, 184, 166, 0.35);
 $shadow-card: 0 25px 50px rgba(0, 0, 0, 0.5);
 $shadow-elevated: 0 50px 100px rgba(0, 0, 0, 0.7);
 $radius-sm: 8px;

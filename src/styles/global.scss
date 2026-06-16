@@ -1,50 +1,7 @@
 @use './base/variables' as *;
 @use './base/mixins' as *;
-
-// ===========================
-// CSS CUSTOM PROPERTIES
-// ===========================
-:root {
-  --color-primary: #{$color-primary};
-  --color-secondary: #{$color-secondary};
-  --color-accent: #{$color-accent};
-  --color-bg: #{$color-background};
-  --color-surface: #{$color-surface};
-  --color-surface-2: #{$color-surface-2};
-  --color-text: #{$color-text};
-  --color-text-secondary: #{$color-text-secondary};
-  --color-text-muted: #{$color-text-muted};
-  --color-border: #{$color-border};
-  --color-border-glow: #{$color-border-glow};
-  --font-display: #{$font-display};
-  --font-mono: #{$font-mono};
-  --font-body: #{$font-body};
-  --glow-primary: #{$glow-primary};
-  --glow-secondary: #{$glow-secondary};
-  --glow-accent: #{$glow-accent};
-  --shadow-card: #{$shadow-card};
-  --radius-sm: #{$radius-sm};
-  --radius-md: #{$radius-md};
-  --radius-lg: #{$radius-lg};
-  --radius-xl: #{$radius-xl};
-  --transition-fast: #{$transition-fast};
-  --transition-base: #{$transition-base};
-  --transition-slow: #{$transition-slow};
-  --transition-spring: #{$transition-spring};
-  --cursor-x: 0px;
-  --cursor-y: 0px;
-}
-
-[data-theme="light"] {
-  --color-bg: #{$color-light-bg};
-  --color-surface: #{$color-light-surface};
-  --color-surface-2: #F0F2FF;
-  --color-text: #{$color-light-text};
-  --color-text-secondary: #{$color-light-text-secondary};
-  --color-text-muted: rgba(10, 15, 44, 0.4);
-  --color-border: #{$color-light-border};
-  --color-border-glow: rgba(0, 212, 255, 0.3);
-}
+@use './base/theme-tokens';
+@use './base/light-theme';
 
 // ===========================
 // RESET
@@ -59,6 +16,9 @@ html {
   font-size: 16px;
   scroll-behavior: auto; // Lenis handles this
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  background: var(--color-bg);
+  transition: var(--theme-transition);
 }
 
 body {
@@ -70,7 +30,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  width: 100%;
   cursor: none;
+  transition: var(--theme-transition);
   
   @include max-md {
     cursor: auto;
@@ -85,7 +47,7 @@ body {
   padding: 0.65rem 1rem;
   border-radius: 8px;
   background: var(--color-primary);
-  color: #050816;
+  color: #FFFFFF;
   font-weight: 700;
   transform: translateY(-160%);
 
@@ -129,7 +91,7 @@ input, textarea, select {
 // ===========================
 ::selection {
   background: rgba($color-primary, 0.3);
-  color: $color-text;
+  color: var(--color-text);
 }
 
 // ===========================
@@ -139,7 +101,7 @@ input, textarea, select {
   width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: $color-background;
+  background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
   background: rgba($color-primary, 0.4);
@@ -241,7 +203,7 @@ input, textarea, select {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.03;
+  opacity: var(--noise-opacity);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 128px;
@@ -265,6 +227,12 @@ input, textarea, select {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .noise-overlay {
+    opacity: calc(var(--noise-opacity) * 0.5);
   }
 }
 

@@ -5,9 +5,17 @@
   background: var(--color-primary);
   border-radius: 50%;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 999999;
   transform: translate(-50%, -50%);
-  mix-blend-mode: difference;
+  transition: background 0.2s;
+
+  // REMOVE THIS
+  // mix-blend-mode: difference;
+
+  box-shadow:
+    0 0 10px rgba(37, 99, 235, 0.8),
+    0 0 20px rgba(37, 99, 235, 0.4);
+
   transition: background 0.2s;
 
   &.hovering {
@@ -23,10 +31,10 @@
   position: fixed;
   width: 36px;
   height: 36px;
-  border: 1.5px solid rgba(0, 212, 255, 0.5);
+  border: 1.5px solid rgba(37, 99, 235, 0.45);
   border-radius: 50%;
   pointer-events: none;
-  z-index: 9998;
+  z-index: 999998;
   transform: translate(-50%, -50%);
   transition: border-color 0.3s;
   display: flex;
@@ -34,8 +42,8 @@
   justify-content: center;
 
   &.hovering {
-    border-color: rgba(0, 212, 255, 0.8);
-    background: rgba(0, 212, 255, 0.05);
+    border-color: rgba(56, 189, 248, 0.75);
+    background: rgba(37, 99, 235, 0.08);
   }
 
   @media (max-width: 768px) {

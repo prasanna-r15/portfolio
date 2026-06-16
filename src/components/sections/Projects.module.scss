@@ -1,7 +1,8 @@
 .projects {
-  padding: 3rem 0;
+  @include section-padding;
   position: relative;
   background: var(--color-bg);
+  overflow: hidden;
 
   &::before {
     content: '';
@@ -14,16 +15,11 @@
   }
 }
 
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
+.container { @include container; }
 
-// Header
 .header {
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: clamp(2.5rem, 6vw, 5rem);
 }
 
 .sectionLabel {
@@ -50,7 +46,7 @@
 
 .heading {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  @include fluid-type(2rem, 5vw, 4rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.05;
@@ -67,23 +63,23 @@
 
 .subheading {
   font-family: var(--font-body);
-  font-size: 1.05rem;
+  font-size: clamp(0.92rem, 1.8vw, 1.05rem);
   color: var(--color-text-secondary);
   font-weight: 300;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
-// Grid
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
 
-  @media (max-width: 900px) {
+  @include max-lg {
     grid-template-columns: 1fr;
   }
 }
 
-// Card
 .card {
   position: relative;
   background: var(--color-surface);
@@ -96,8 +92,14 @@
   height: 100%;
 
   &:hover {
-    border-color: rgba(0, 212, 255, 0.2);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    border-color: var(--card-hover-border);
+    box-shadow: var(--card-hover-shadow);
+  }
+
+  @include max-md {
+    &:hover {
+      box-shadow: none;
+    }
   }
 }
 
@@ -111,7 +113,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   padding: 1.5rem 1.75rem 0;
+  flex-wrap: wrap;
 }
 
 .cardMeta {
@@ -153,7 +157,7 @@
 
 .cardTitle {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
   font-weight: 700;
   color: var(--color-text);
   letter-spacing: -0.02em;
@@ -172,44 +176,18 @@
 
   p {
     color: var(--color-text-secondary);
-    font-size: 0.84rem;
+    font-size: clamp(0.8rem, 1.6vw, 0.84rem);
     line-height: 1.65;
   }
 }
 
-// Features list
-.features {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.feature {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-body);
-  font-size: 0.82rem;
-  color: var(--color-text-secondary);
-}
-
-.featureDot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  flex-shrink: 0;
-}
-
-// Impact
 .impact {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.6rem 0.875rem;
-  background: rgba(0, 212, 255, 0.06);
-  border: 1px solid rgba(0, 212, 255, 0.12);
+  background: var(--primary-soft-bg);
+  border: 1px solid var(--primary-soft-border);
   border-radius: 8px;
   margin-top: auto;
 }
@@ -225,7 +203,6 @@
   letter-spacing: 0.04em;
 }
 
-// Footer
 .cardFooter {
   padding: 1.25rem 1.75rem 1.75rem;
   display: flex;
@@ -245,8 +222,8 @@
 
 .techTag {
   padding: 0.2rem 0.65rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--surface-subtle);
+  border: 1px solid var(--color-border);
   border-radius: 6px;
   font-family: var(--font-mono);
   font-size: 0.65rem;
@@ -258,34 +235,33 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.5rem 1rem;
+  padding: 0.55rem 1rem;
+  min-height: 44px;
   border-radius: 100px;
   font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--color-primary);
-  background: rgba(0, 212, 255, 0.07);
-  border: 1px solid rgba(0, 212, 255, 0.18);
-  cursor: none;
+  background: var(--primary-soft-bg);
+  border: 1px solid var(--primary-soft-border);
   white-space: nowrap;
   transition: box-shadow 0.2s;
 
   &:hover {
-    box-shadow: 0 6px 20px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
   }
 }
 
-@media (max-width: 560px) {
-  .projects { padding: 3rem 0; }
-  .container { padding: 0 1.25rem; }
-  .header { margin-bottom: 3rem; }
-}
+@include max-sm {
+  .cardHeader,
+  .cardContent,
+  .cardFooter {
+    padding-left: 1.15rem;
+    padding-right: 1.15rem;
+  }
 
-// Card glow overlay
-.cardGlow {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  transition: opacity 0.3s;
-  border-radius: 20px;
+  .viewBtn {
+    width: 100%;
+    justify-content: center;
+  }
 }

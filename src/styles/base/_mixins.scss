@@ -1,4 +1,5 @@
 @use "./variables" as *;
+
 // ===========================
 // RESPONSIVE MIXINS
 // ===========================
@@ -13,6 +14,14 @@
 @mixin max-sm { @media (max-width: #{$bp-sm - 1px}) { @content; } }
 @mixin max-md { @media (max-width: #{$bp-md - 1px}) { @content; } }
 @mixin max-lg { @media (max-width: #{$bp-lg - 1px}) { @content; } }
+@mixin timeline-desktop { @media (min-width: #{$bp-timeline}) { @content; } }
+@mixin max-timeline { @media (max-width: #{$bp-timeline - 1px}) { @content; } }
+@mixin timeline-tablet { @media (min-width: #{$bp-md}) and (max-width: #{$bp-timeline - 1px}) { @content; } }
+
+@mixin mobile { @media (max-width: #{$bp-md - 1px}) { @content; } }
+@mixin tablet { @media (min-width: #{$bp-md}) and (max-width: #{$bp-lg - 1px}) { @content; } }
+@mixin laptop { @media (min-width: #{$bp-lg}) and (max-width: #{$bp-xl - 1px}) { @content; } }
+@mixin desktop { @media (min-width: #{$bp-xl}) { @content; } }
 
 // ===========================
 // FLEX UTILITIES
@@ -38,17 +47,25 @@
 // GLASSMORPHISM
 // ===========================
 @mixin glass($opacity: 0.05, $blur: 20px) {
-  background: rgba(255, 255, 255, $opacity);
+  background: rgba(248, 250, 252, $opacity);
   backdrop-filter: blur($blur);
   -webkit-backdrop-filter: blur($blur);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(71, 85, 105, 0.35);
 }
 
-@mixin glass-dark($opacity: 0.4, $blur: 20px) {
-  background: rgba(5, 8, 22, $opacity);
+@mixin glass-dark($opacity: 0.72, $blur: 20px) {
+  background: rgba(15, 23, 42, $opacity);
   backdrop-filter: blur($blur);
   -webkit-backdrop-filter: blur($blur);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(71, 85, 105, 0.45);
+}
+
+@mixin glass-card {
+  background: var(--glass-card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-card-border);
+  box-shadow: var(--shadow-card);
 }
 
 // ===========================
@@ -64,6 +81,7 @@
 @mixin gradient-border($from: $color-primary, $to: $color-secondary, $radius: $radius-lg) {
   position: relative;
   border-radius: $radius;
+
   &::before {
     content: '';
     position: absolute;
@@ -108,6 +126,10 @@
   letter-spacing: 0.02em;
 }
 
+@mixin fluid-type($min, $preferred, $max) {
+  font-size: clamp(#{$min}, #{$preferred}, #{$max});
+}
+
 // ===========================
 // LAYOUT
 // ===========================
@@ -115,19 +137,29 @@
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 $space-6;
-  
-  @include lg {
-    padding: 0 $space-8;
+  padding: 0 clamp(#{$space-4}, 4vw, #{$space-8});
+
+  @include xl {
+    max-width: 1320px;
+  }
+
+  @include xxl {
+    max-width: 1440px;
   }
 }
 
 @mixin section-padding {
-  padding: $space-20 0;
-  
-  @include lg {
-    padding: $space-32 0;
-  }
+  padding: clamp(#{$space-16}, 8vw, #{$space-32}) 0;
+}
+
+@mixin touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+@mixin safe-vh {
+  min-height: 100svh;
+  min-height: 100dvh;
 }
 
 // ===========================
@@ -135,6 +167,7 @@
 // ===========================
 @mixin hover-lift($y: -4px) {
   transition: transform $transition-base, box-shadow $transition-base;
+
   &:hover {
     transform: translateY($y);
   }
@@ -142,6 +175,7 @@
 
 @mixin shimmer {
   overflow: hidden;
+
   &::after {
     content: '';
     position: absolute;
@@ -149,8 +183,15 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
     animation: shimmer 2.5s infinite;
+  }
+}
+
+@mixin reduce-motion-safe {
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important;
+    transition: none !important;
   }
 }
 
@@ -160,6 +201,7 @@
 @mixin custom-scrollbar {
   &::-webkit-scrollbar { width: 4px; }
   &::-webkit-scrollbar-track { background: transparent; }
+
   &::-webkit-scrollbar-thumb {
     background: rgba($color-primary, 0.4);
     border-radius: 2px;

@@ -92,9 +92,10 @@ export default function Navbar() {
           <motion.div
             id="mobile-navigation"
             className={styles.mobileMenu}
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
+        initial={{ opacity: 0, x: '100%' }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: '100%' }}
+        transition={{ type: 'spring', damping: 28, stiffness: 260 }}
           >
             <nav className={styles.mobileLinks} aria-label="Mobile navigation">
               {navLinks.map((link, index) => (

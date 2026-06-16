@@ -1,7 +1,9 @@
 .experience {
-  padding: 3rem 0;
+  @include section-padding;
   background: var(--color-bg);
   position: relative;
+  overflow: hidden;
+  transition: var(--theme-transition);
 
   &::before {
     content: '';
@@ -15,13 +17,11 @@
 }
 
 .container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  @include container;
 }
 
 .header {
-  margin-bottom: 4rem;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
 }
 
 .sectionLabel {
@@ -47,8 +47,8 @@
 }
 
 .heading {
+  @include fluid-type(2rem, 5vw, 4rem);
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   color: var(--color-text);
@@ -61,40 +61,129 @@
   background-clip: text;
 }
 
-// Timeline
+// ── Timeline shell ──────────────────────────────────────────
 .timeline {
   position: relative;
-  padding-left: 3rem;
-  max-width: 1050px;
+  max-width: 100%;
+  width: 100%;
+
+  // Mobile: left-aligned vertical timeline
+  @include mobile {
+    padding-left: 2rem;
+  }
+
+  // Tablet: centered single column
+  @include timeline-tablet {
+    max-width: 760px;
+    margin: 0 auto;
+    padding-left: 0;
+  }
+
+  // Desktop: alternating layout
+  @include timeline-desktop {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-left: 0;
+  }
 }
 
 .timelineLine {
   position: absolute;
-  left: 0;
   top: 0;
   bottom: 0;
   width: 2px;
-  background: rgba(255,255,255,0.06);
+  background: var(--timeline-line);
   border-radius: 1px;
   overflow: hidden;
+
+  // Mobile: left rail
+  @include mobile {
+    left: 0.75rem;
+    transform: none;
+  }
+
+  // Tablet + Desktop: centered rail
+  @media (min-width: #{$bp-md}) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .timelineProgress {
   width: 100%;
   background: linear-gradient(180deg, var(--color-primary), var(--color-secondary), var(--color-accent));
   border-radius: 1px;
-  box-shadow: 0 0 12px rgba(0, 212, 255, 0.5);
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.25);
 }
 
-// Timeline item
+// ── Timeline items ──────────────────────────────────────────
 .timelineItem {
   position: relative;
-  margin-bottom: 3rem;
+  width: 100%;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+
+  // Mobile defaults handled by full width + left dot
+  @include mobile {
+    padding-right: 0;
+  }
+
+  // Tablet: centered cards, dot on center line
+  @include timeline-tablet {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+
+    &.sideLeft,
+    &.sideRight {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .dot {
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+    }
+  }
+
+  // Desktop: alternating sides
+  @include timeline-desktop {
+    width: calc(50% - 2.5rem);
+
+    &.sideLeft {
+      margin-right: auto;
+      padding-right: 1.5rem;
+      padding-left: 0;
+
+      .dot {
+        left: auto;
+        right: calc(-2.5rem - 7px);
+        transform: none;
+      }
+    }
+
+    &.sideRight {
+      margin-left: auto;
+      padding-left: 1.5rem;
+      padding-right: 0;
+
+      .dot {
+        left: calc(-2.5rem - 7px);
+        right: auto;
+        transform: none;
+      }
+    }
+  }
 }
 
 .dot {
   position: absolute;
-  left: -3.45rem;
   top: 1.75rem;
   width: 14px;
   height: 14px;
@@ -102,19 +191,27 @@
   background: var(--color-primary);
   border: 2px solid var(--color-bg);
   z-index: 10;
+  flex-shrink: 0;
+
+  @include mobile {
+    left: -1.25rem;
+    transform: translateX(-50%);
+  }
 }
 
-// Card
+// ── Card ────────────────────────────────────────────────────
 .card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 20px;
   overflow: hidden;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  width: 100%;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.35s ease;
 
   &:hover {
-    border-color: rgba(0, 212, 255, 0.2);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    border-color: var(--card-hover-border);
+    box-shadow: var(--card-hover-shadow);
   }
 }
 
@@ -122,13 +219,14 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 2rem 2rem 1.5rem;
+  padding: clamp(1.15rem, 3vw, 2rem) clamp(1.15rem, 3vw, 2rem) 1.5rem;
   gap: 1.5rem;
   flex-wrap: wrap;
 }
 
 .cardLeft {
   flex: 1;
+  min-width: 0;
 }
 
 .companyRow {
@@ -140,30 +238,33 @@
 
 .role {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  @include fluid-type(1.05rem, 2.5vw, 1.5rem);
   font-weight: 700;
   color: var(--color-text);
   letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
 }
 
 .type {
   padding: 0.2rem 0.65rem;
-  background: rgba(0, 255, 163, 0.1);
-  border: 1px solid rgba(0, 255, 163, 0.2);
+  background: var(--accent-soft-bg);
+  border: 1px solid var(--accent-soft-border);
   border-radius: 100px;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: clamp(0.58rem, 1.4vw, 0.65rem);
   color: var(--color-accent);
   letter-spacing: 0.06em;
+  white-space: nowrap;
 }
 
 .company {
   font-family: var(--font-body);
-  font-size: 1rem;
+  @include fluid-type(0.9rem, 1.8vw, 1rem);
   color: var(--color-text-secondary);
   font-weight: 400;
   margin-top: 0.3rem;
   margin-bottom: 0.75rem;
+  overflow-wrap: anywhere;
 }
 
 .meta {
@@ -178,7 +279,7 @@
   align-items: center;
   gap: 0.3rem;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  @include fluid-type(0.65rem, 1.4vw, 0.72rem);
   color: var(--color-text-muted);
   letter-spacing: 0.04em;
 }
@@ -190,29 +291,33 @@
   border-radius: 50%;
 }
 
-// Domain badges
 .domainBadges {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
   flex-shrink: 0;
+
+  @include max-sm {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
 }
 
 .domainBadge {
   padding: 0.3rem 0.875rem;
   border-radius: 100px;
-  background: rgba(123, 97, 255, 0.1);
-  border: 1px solid rgba(123, 97, 255, 0.25);
+  background: var(--secondary-soft-bg);
+  border: 1px solid var(--secondary-soft-border);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: clamp(0.62rem, 1.4vw, 0.7rem);
   color: var(--color-secondary);
   letter-spacing: 0.06em;
   text-align: center;
 }
 
-// Highlights
 .highlights {
-  padding: 1.5rem 2rem 2rem;
+  padding: 1.5rem clamp(1.15rem, 3vw, 2rem) clamp(1.15rem, 3vw, 2rem);
   border-top: 1px solid var(--color-border);
 }
 
@@ -228,10 +333,10 @@
 .highlightsList {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.6rem 1.5rem;
 
-  @media (max-width: 768px) {
+  @include max-md {
     grid-template-columns: 1fr;
   }
 }
@@ -241,9 +346,10 @@
   align-items: flex-start;
   gap: 0.5rem;
   font-family: var(--font-body);
-  font-size: 0.875rem;
+  @include fluid-type(0.8rem, 1.8vw, 0.875rem);
   color: var(--color-text-secondary);
-  line-height: 1.5;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 
 .highlightArrow {
@@ -264,41 +370,71 @@
   padding: 0.3rem 0.7rem;
   border: 1px solid var(--color-border);
   border-radius: 100px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--surface-subtle);
   color: var(--color-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: clamp(0.62rem, 1.4vw, 0.68rem);
 }
 
-// Future item
+// ── Future item ─────────────────────────────────────────────
 .futureItem {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 2rem;
+  width: 100%;
+
+  @include timeline-tablet {
+    max-width: 100%;
+    margin: 0 auto;
+
+    .futureDot {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  @include timeline-desktop {
+    width: calc(50% - 2.5rem);
+    margin-left: auto;
+    padding-left: 1.5rem;
+
+    .futureDot {
+      left: calc(-2.5rem - 4px);
+      transform: none;
+    }
+  }
 }
 
 .futureDot {
   position: absolute;
-  left: -3.2rem;
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.2);
+  border: 2px solid var(--color-border);
   background: transparent;
+
+  @include mobile {
+    left: -1.25rem;
+    transform: translateX(-50%);
+  }
 }
 
 .futureCard {
   padding: 1rem 1.5rem;
-  border: 1px dashed rgba(255,255,255,0.1);
+  border: 1px dashed var(--color-border);
   border-radius: 12px;
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+  background: var(--color-surface);
 }
 
 .futureText {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
   font-weight: 600;
   background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   -webkit-background-clip: text;
@@ -308,28 +444,15 @@
 
 .futureSubtext {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: clamp(0.65rem, 1.4vw, 0.72rem);
   color: var(--color-text-muted);
   letter-spacing: 0.06em;
 }
 
-@media (max-width: 560px) {
-  .timeline {
-    padding-left: 2rem;
-  }
-
-  .dot {
-    left: -2.45rem;
-  }
-
+@include max-sm {
   .cardTop,
   .highlights {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-
-  .domainBadges {
-    flex-direction: row;
-    flex-wrap: wrap;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
