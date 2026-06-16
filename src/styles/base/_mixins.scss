@@ -44,26 +44,20 @@
 }
 
 // ===========================
-// GLASSMORPHISM
+// SOFT SURFACES
 // ===========================
 @mixin glass($opacity: 0.05, $blur: 20px) {
-  background: rgba(248, 250, 252, $opacity);
-  backdrop-filter: blur($blur);
-  -webkit-backdrop-filter: blur($blur);
-  border: 1px solid rgba(71, 85, 105, 0.35);
+  background: rgba(248, 241, 231, $opacity);
+  border: 1px solid rgba(106, 91, 79, 0.35);
 }
 
 @mixin glass-dark($opacity: 0.72, $blur: 20px) {
-  background: rgba(15, 23, 42, $opacity);
-  backdrop-filter: blur($blur);
-  -webkit-backdrop-filter: blur($blur);
-  border: 1px solid rgba(71, 85, 105, 0.45);
+  background: rgba(32, 27, 23, $opacity);
+  border: 1px solid rgba(106, 91, 79, 0.45);
 }
 
 @mixin glass-card {
   background: var(--glass-card-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-card-border);
   box-shadow: var(--shadow-card);
 }
@@ -72,10 +66,7 @@
 // GRADIENTS
 // ===========================
 @mixin gradient-text($from: $color-primary, $to: $color-secondary) {
-  background: linear-gradient(135deg, $from, $to);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: $from;
 }
 
 @mixin gradient-border($from: $color-primary, $to: $color-secondary, $radius: $radius-lg) {
@@ -96,11 +87,11 @@
 // GLOW EFFECTS
 // ===========================
 @mixin glow($color: $color-primary, $size: 20px, $opacity: 0.4) {
-  box-shadow: 0 0 $size rgba($color, $opacity), 0 0 ($size * 2) rgba($color, $opacity * 0.5);
+  box-shadow: 0 ($size * 0.35) $size rgba($color, $opacity * 0.45);
 }
 
 @mixin text-glow($color: $color-primary, $size: 15px) {
-  text-shadow: 0 0 $size rgba($color, 0.8), 0 0 ($size * 2) rgba($color, 0.4);
+  text-shadow: none;
 }
 
 // ===========================

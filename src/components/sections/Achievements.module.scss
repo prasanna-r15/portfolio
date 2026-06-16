@@ -55,10 +55,7 @@
 }
 
 .headingGradient {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-primary);
 }
 
 // Grid
@@ -91,21 +88,11 @@
 
   &:hover {
     border-color: var(--card-color);
-
-    .cardGlow {
-      opacity: 1;
-    }
   }
 }
 
 .cardGlow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 100%, rgba(0,212,255,0.06) 0%, transparent 70%);
-  background: radial-gradient(ellipse at 50% 100%, var(--card-color) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.4s;
-  pointer-events: none;
+  display: none;
 }
 
 .cardBorder {
@@ -133,7 +120,7 @@
   color: var(--card-color);
   line-height: 1;
   margin-bottom: 0.5rem;
-  text-shadow: 0 0 8px var(--card-color);
+  text-shadow: none;
 }
 
 .cardLabel {

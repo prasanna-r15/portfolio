@@ -10,9 +10,8 @@
   &.scrolled {
     padding: 0.85rem 0;
     background: var(--navbar-bg);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
   }
 }
 
@@ -36,10 +35,7 @@
   font-family: var(--font-display);
   font-size: clamp(1.1rem, 2vw, 1.25rem);
   font-weight: 800;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-primary);
   letter-spacing: -0.03em;
 }
 
@@ -49,7 +45,6 @@
   background: var(--color-accent);
   border-radius: 50%;
   margin-top: -8px;
-  box-shadow: 0 0 10px var(--color-accent);
 }
 
 .links {
@@ -138,7 +133,7 @@
 
 .cta {
   padding: 0.55rem 1.25rem;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: var(--color-primary);
   color: var(--color-on-primary);
   border-radius: 100px;
   font-family: var(--font-body);
@@ -150,7 +145,7 @@
   white-space: nowrap;
 
   &:hover {
-    box-shadow: 0 0 20px rgba(37, 99, 235, 0.35);
+    background: var(--color-hover-accent);
   }
 
   @include max-sm {
@@ -194,8 +189,6 @@
   inset: 0;
   z-index: 90;
   background: color-mix(in srgb, var(--color-bg) 97%, transparent);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

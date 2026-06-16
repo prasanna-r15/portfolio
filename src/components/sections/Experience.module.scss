@@ -55,10 +55,7 @@
 }
 
 .headingGradient {
-  background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-primary);
 }
 
 // ── Timeline shell ──────────────────────────────────────────
@@ -111,9 +108,8 @@
 
 .timelineProgress {
   width: 100%;
-  background: linear-gradient(180deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+  background: var(--color-primary);
   border-radius: 1px;
-  box-shadow: 0 0 12px rgba(37, 99, 235, 0.25);
 }
 
 // ── Timeline items ──────────────────────────────────────────
@@ -436,10 +432,7 @@
   font-family: var(--font-display);
   font-size: clamp(0.95rem, 2vw, 1.1rem);
   font-weight: 600;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-primary);
 }
 
 .futureSubtext {

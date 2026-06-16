@@ -90,7 +90,7 @@ input, textarea, select {
 // SELECTION
 // ===========================
 ::selection {
-  background: rgba($color-primary, 0.3);
+  background: rgba($color-primary, 0.22);
   color: var(--color-text);
 }
 
@@ -104,10 +104,10 @@ input, textarea, select {
   background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba($color-primary, 0.4);
+  background: rgba($color-primary, 0.42);
   border-radius: 3px;
   &:hover {
-    background: rgba($color-primary, 0.7);
+    background: rgba($color-primary, 0.62);
   }
 }
 
@@ -115,7 +115,7 @@ input, textarea, select {
 // FOCUS
 // ===========================
 :focus-visible {
-  outline: 2px solid $color-primary;
+  outline: 2px solid var(--color-primary);
   outline-offset: 3px;
 }
 

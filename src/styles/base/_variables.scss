@@ -1,31 +1,31 @@
 // ===========================
-// COLOR SYSTEM — Premium FinTech Palette
+// COLOR SYSTEM — Handcrafted Portfolio Palette
 // ===========================
-$color-primary: #2563EB;
-$color-secondary: #0EA5E9;
-$color-accent: #14B8A6;
-$color-hover-accent: #38BDF8;
-$color-background: #0F172A;
-$color-surface: #1E293B;
-$color-surface-2: #334155;
-$color-card: #334155;
-$color-text: #F8FAFC;
-$color-text-secondary: #CBD5E1;
-$color-text-muted: rgba(203, 213, 225, 0.55);
-$color-border: #475569;
-$color-border-glow: rgba(37, 99, 235, 0.35);
+$color-primary: #9A5B3F;
+$color-secondary: #69724D;
+$color-accent: #B5794A;
+$color-hover-accent: #7C442F;
+$color-background: #201B17;
+$color-surface: #2A241F;
+$color-surface-2: #342D27;
+$color-card: #342D27;
+$color-text: #F8F1E7;
+$color-text-secondary: #D9CABB;
+$color-text-muted: rgba(217, 202, 187, 0.6);
+$color-border: #4C4138;
+$color-border-glow: rgba(154, 91, 63, 0.24);
 
 // Light theme
-$color-light-bg: #F8FAFC;
-$color-light-surface: #FFFFFF;
-$color-light-card: #FFFFFF;
-$color-light-text: #0F172A;
-$color-light-text-secondary: #475569;
-$color-light-text-muted: rgba(71, 85, 105, 0.65);
-$color-light-border: #CBD5E1;
-$color-light-hover: #E2E8F0;
-$color-light-shadow-card: 0 1px 3px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.08);
-$color-light-shadow-elevated: 0 4px 6px rgba(15, 23, 42, 0.05), 0 20px 40px rgba(15, 23, 42, 0.1);
+$color-light-bg: #F7F0E6;
+$color-light-surface: #FFF9F1;
+$color-light-card: #FFFDF8;
+$color-light-text: #2C241F;
+$color-light-text-secondary: #65584C;
+$color-light-text-muted: rgba(101, 88, 76, 0.68);
+$color-light-border: #D8C8B6;
+$color-light-hover: #EFE2D2;
+$color-light-shadow-card: 0 1px 2px rgba(66, 47, 35, 0.05), 0 12px 30px rgba(66, 47, 35, 0.08);
+$color-light-shadow-elevated: 0 8px 18px rgba(66, 47, 35, 0.08), 0 28px 54px rgba(66, 47, 35, 0.12);
 
 // Timeline breakpoint
 $bp-timeline: 1200px;
@@ -105,11 +105,11 @@ $transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 // ===========================
 // EFFECTS
 // ===========================
-$glow-primary: 0 0 30px rgba(37, 99, 235, 0.35);
-$glow-secondary: 0 0 30px rgba(14, 165, 233, 0.35);
-$glow-accent: 0 0 30px rgba(20, 184, 166, 0.35);
-$shadow-card: 0 25px 50px rgba(0, 0, 0, 0.5);
-$shadow-elevated: 0 50px 100px rgba(0, 0, 0, 0.7);
+$glow-primary: 0 10px 30px rgba(154, 91, 63, 0.18);
+$glow-secondary: 0 10px 30px rgba(105, 114, 77, 0.16);
+$glow-accent: 0 10px 30px rgba(181, 121, 74, 0.18);
+$shadow-card: 0 20px 45px rgba(12, 9, 7, 0.35);
+$shadow-elevated: 0 36px 80px rgba(12, 9, 7, 0.48);
 $radius-sm: 8px;
 $radius-md: 12px;
 $radius-lg: 16px;

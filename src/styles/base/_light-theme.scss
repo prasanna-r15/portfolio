@@ -3,7 +3,7 @@
 // Component-level light theme refinements
 [data-theme="light"] {
   ::selection {
-    background: rgba(37, 99, 235, 0.18);
+    background: rgba(154, 91, 63, 0.18);
     color: #{$color-light-text};
   }
 
@@ -12,10 +12,10 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(37, 99, 235, 0.35);
+    background: rgba(154, 91, 63, 0.35);
 
     &:hover {
-      background: rgba(37, 99, 235, 0.55);
+      background: rgba(154, 91, 63, 0.55);
     }
   }
 

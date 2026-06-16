@@ -17,7 +17,7 @@
 
 .canvasContainer {
   z-index: 1;
-  opacity: 0.7;
+  opacity: 0.28;
 
   @include max-md {
     display: none;
@@ -32,8 +32,8 @@
 .blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
-  animation: blob 12s infinite ease-in-out;
+  filter: blur(110px);
+  animation: blob 20s infinite ease-in-out;
   will-change: transform;
 
   @include max-md {
@@ -70,7 +70,7 @@
 
 .grid {
   z-index: 0;
-  opacity: 0.7;
+  opacity: 0.45;
   background-image:
     linear-gradient(var(--hero-grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--hero-grid-line) 1px, transparent 1px);
@@ -138,10 +138,7 @@
   hyphens: auto;
 
   span {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--color-primary);
   }
 }
 
@@ -209,8 +206,13 @@
 }
 
 .ctaPrimary {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: var(--color-primary);
   color: var(--color-on-primary);
+  box-shadow: var(--shadow-sm);
+
+  &:hover {
+    background: var(--color-hover-accent);
+  }
 }
 
 .ctaSecondary {
@@ -238,7 +240,6 @@
   border: 1px solid var(--color-border);
   border-radius: 14px;
   background: var(--surface-panel);
-  backdrop-filter: blur(12px);
   box-shadow: var(--shadow-sm);
 
   strong {
@@ -269,7 +270,6 @@
   border: 1px solid var(--color-border);
   border-radius: 18px;
   background: var(--surface-panel-strong);
-  backdrop-filter: blur(18px);
   box-shadow: var(--shadow-card);
   transform: translateY(-50%);
 

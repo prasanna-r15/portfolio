@@ -50,27 +50,39 @@ export default function CertificateModal({ certificate, onClose }) {
 
   useEffect(() => {
     if (!certificate) return undefined;
-
+  
     previousFocusRef.current = document.activeElement;
     setZoom(1);
-    const scrollY = document.body.style.top;
-
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.left = '';
-    document.body.style.right = '';
-    document.body.style.width = '';
-
-    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+  
+    // Save current scroll position BEFORE any body style changes
+    const scrollY = window.scrollY;
+  
+    // Lock scroll without moving the page
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+  
     window.addEventListener('keydown', handleKeyDown);
-
+  
     requestAnimationFrame(() => {
       const closeButton = modalRef.current?.querySelector(FOCUSABLE_SELECTOR);
       closeButton?.focus();
     });
-
+  
     return () => {
+      // Restore body styles first
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
       document.body.style.overflow = '';
+  
+      // Then restore scroll position
+      window.scrollTo(0, scrollY);
+  
       window.removeEventListener('keydown', handleKeyDown);
       previousFocusRef.current?.focus?.();
     };

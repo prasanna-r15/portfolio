@@ -50,7 +50,7 @@
   position: relative;
   border-radius: 20px;
   padding: 3px;
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.35), rgba(14, 165, 233, 0.35), rgba(20, 184, 166, 0.2));
+  background: var(--color-border);
 }
 
 .photoInner {
@@ -75,17 +75,14 @@
   display: none;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--color-surface), var(--color-surface-2));
+  background: var(--color-surface);
 }
 
 .photoInitials {
   font-family: var(--font-display);
   font-size: 5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-primary);
   letter-spacing: -0.03em;
 }
 
@@ -113,7 +110,6 @@
   gap: 0.75rem;
   padding: 0.75rem 1.25rem;
   background: var(--surface-badge);
-  backdrop-filter: blur(20px);
   border: 1px solid var(--primary-soft-border);
   border-radius: 14px;
   box-shadow: var(--shadow-card);
@@ -142,7 +138,7 @@
   display: block;
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  color: rgba(56, 189, 248, 0.55);
+  color: var(--color-text-muted);
   letter-spacing: 0.05em;
 }
 
@@ -156,7 +152,6 @@
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   background: var(--surface-badge);
-  backdrop-filter: blur(20px);
   border: 1px solid var(--accent-soft-border);
   border-radius: 100px;
   font-family: var(--font-mono);
@@ -209,17 +204,11 @@
 }
 
 .headingAccent {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-primary);
 }
 
 .headingAccent2 {
-  background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-secondary);
 }
 
 .bio {

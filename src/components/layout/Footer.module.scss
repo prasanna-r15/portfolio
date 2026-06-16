@@ -11,7 +11,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-primary), var(--color-secondary), transparent);
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
   opacity: 0.4;
 }
 
@@ -26,7 +26,7 @@
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 0.9;
-  color: gainsboro;
+  color: color-mix(in srgb, var(--color-text) 15%, transparent);
   margin-bottom: 3rem;
   user-select: none;
   pointer-events: none;
@@ -48,10 +48,7 @@
 }
 
 .bigNameAccent {
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(14, 165, 233, 0.12));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: var(--color-text-secondary);
-  background-clip: text;
+  color: var(--color-text-secondary);
 }
 
 // Grid

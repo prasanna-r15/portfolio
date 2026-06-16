@@ -12,10 +12,10 @@ function ParticleField({ mouse, count = 3500 }) {
     const colors = new Float32Array(count * 3);
 
     const palette = [
-      new THREE.Color('#2563EB'),
-      new THREE.Color('#0EA5E9'),
-      new THREE.Color('#14B8A6'),
-      new THREE.Color('#F8FAFC'),
+      new THREE.Color('#9A5B3F'),
+      new THREE.Color('#69724D'),
+      new THREE.Color('#B5794A'),
+      new THREE.Color('#F8F1E7'),
     ];
 
     for (let i = 0; i < count; i++) {
@@ -56,8 +56,7 @@ function ParticleField({ mouse, count = 3500 }) {
         size={0.025}
         sizeAttenuation={true}
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
-        opacity={0.85}
+        opacity={0.55}
       />
     </Points>
   );
@@ -76,7 +75,7 @@ function FloatingGeometry({ position, color, speed = 1 }) {
   return (
     <mesh ref={meshRef} position={position}>
       <octahedronGeometry args={[0.15, 0]} />
-      <meshBasicMaterial color={color} wireframe transparent opacity={0.4} />
+      <meshBasicMaterial color={color} wireframe transparent opacity={0.22} />
     </mesh>
   );
 }
@@ -85,11 +84,11 @@ function Scene({ mouseRef }) {
   const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
   const particleCount = isMobile ? 1200 : 3500;
   const geometries = useMemo(() => [
-    { position: [2.5, 1, -1], color: '#2563EB', speed: 0.7 },
-    { position: [-2.5, 0.5, -0.5], color: '#0EA5E9', speed: 1.1 },
-    { position: [1.5, -1.5, -1.5], color: '#14B8A6', speed: 0.9 },
-    { position: [-1.8, -1, -1], color: '#2563EB', speed: 0.6 },
-    { position: [3, -0.5, -2], color: '#0EA5E9', speed: 1.3 },
+    { position: [2.5, 1, -1], color: '#9A5B3F', speed: 0.7 },
+    { position: [-2.5, 0.5, -0.5], color: '#69724D', speed: 1.1 },
+    { position: [1.5, -1.5, -1.5], color: '#B5794A', speed: 0.9 },
+    { position: [-1.8, -1, -1], color: '#9A5B3F', speed: 0.6 },
+    { position: [3, -0.5, -2], color: '#69724D', speed: 1.3 },
   ], []);
 
   return (
@@ -98,9 +97,9 @@ function Scene({ mouseRef }) {
       {geometries.map((g, i) => (
         <FloatingGeometry key={i} {...g} />
       ))}
-      <ambientLight intensity={0.3} />
-      <pointLight position={[3, 3, 3]} intensity={1.5} color="#2563EB" />
-      <pointLight position={[-3, -3, -3]} intensity={1} color="#0EA5E9" />
+      <ambientLight intensity={0.45} />
+      <pointLight position={[3, 3, 3]} intensity={0.8} color="#9A5B3F" />
+      <pointLight position={[-3, -3, -3]} intensity={0.55} color="#69724D" />
     </>
   );
 }
